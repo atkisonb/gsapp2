@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Userfund -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Userfund %></h1>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @userfund.user_id %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:user_id) %></dt>
+      <dd><pre class="prettyprint"><%= @userfund.user_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:fund_id) %></dt>
+      <dd><pre class="prettyprint"><%= @userfund.fund_id %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Fund:</strong>
-  <%= @userfund.fund_id %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              userfunds_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_userfund_path(@userfund), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              userfund_path(@userfund),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<%= link_to 'Edit', edit_userfund_path(@userfund) %> |
-<%= link_to 'Back', userfunds_path %>
