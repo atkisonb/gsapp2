@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :funds
+
   resources :stocks
 
   resources :fund_stocks
