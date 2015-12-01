@@ -1,31 +1,40 @@
-<h1>Listing trade_books</h1>
-
-<table>
+<%- model_class = TradeBook -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => TradeBook %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Stock</th>
-      <th>Trade time</th>
-      <th>Price</th>
-      <th>Stock</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:stock_id) %></th>
+      <th><%= model_class.human_attribute_name(:trade_time) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @trade_books.each do |trade_book| %>
       <tr>
+        <td><%= trade_book.id %></td>
         <td><%= trade_book.stock_id %></td>
         <td><%= trade_book.trade_time %></td>
         <td><%= trade_book.price %></td>
-        <td><%= trade_book.stock %></td>
-        <td><%= link_to 'Show', trade_book %></td>
-        <td><%= link_to 'Edit', edit_trade_book_path(trade_book) %></td>
-        <td><%= link_to 'Destroy', trade_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l trade_book.created_at, format: :long %></td>
+        <td>
+          <%= link_to trade_book_path(trade_book), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to trade_book_path(trade_book), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Trade book', new_trade_book_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_trade_book_path,
+            :class => 'btn btn-primary' %>
