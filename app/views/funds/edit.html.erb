@@ -1,6 +1,5 @@
-<h1>Editing fund</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @fund %> |
-<%= link_to 'Back', funds_path %>
+<%- model_class = Fund -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Fund %></h1>
+</div>
+<%= render :partial => 'form' %>
