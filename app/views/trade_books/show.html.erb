@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @trade_book.stock_id %>
+</p>
+
+<p>
+  <strong>Trade time:</strong>
+  <%= @trade_book.trade_time %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @trade_book.price %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @trade_book.stock %>
+</p>
+
+<%= link_to 'Edit', edit_trade_book_path(@trade_book) %> |
+<%= link_to 'Back', trade_books_path %>

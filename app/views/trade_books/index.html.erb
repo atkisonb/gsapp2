@@ -1,0 +1,31 @@
+<h1>Listing trade_books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stock</th>
+      <th>Trade time</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trade_books.each do |trade_book| %>
+      <tr>
+        <td><%= trade_book.stock_id %></td>
+        <td><%= trade_book.trade_time %></td>
+        <td><%= trade_book.price %></td>
+        <td><%= trade_book.stock %></td>
+        <td><%= link_to 'Show', trade_book %></td>
+        <td><%= link_to 'Edit', edit_trade_book_path(trade_book) %></td>
+        <td><%= link_to 'Destroy', trade_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trade book', new_trade_book_path %>
