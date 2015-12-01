@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fund:</strong>
+  <%= @fund_stock.fund_id %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @fund_stock.stock_id %>
+</p>
+
+<%= link_to 'Edit', edit_fund_stock_path(@fund_stock) %> |
+<%= link_to 'Back', fund_stocks_path %>
